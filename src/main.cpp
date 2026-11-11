@@ -3,7 +3,7 @@
 // Runs `PRAGMA synchronous=OFF;` on every SQLite database the game opens, so that heavy queries stop waiting for the
 // disk. The old mod did it with a jmp stub at 0x449A1C; here it is a mid-function hook at the same instruction:
 // EDI+4 holds the sqlite3* handle, and sqlite3_exec (0x520760) is called with it.
-#include "../../common.hpp"
+#include "../common.hpp"
 
 namespace {
 using SqliteExecFn = int(__cdecl*)(void* db, const char* sql, void* callback, void* arg, char** errmsg);
